@@ -1,0 +1,19 @@
+
+const AGE_CONSTRAINTS = {
+    MIN_AGE_FOR_ZERO_CARD: 7,
+    MAX_AGE_FOR_ZERO_CARD: 100,
+
+    MAX_AGE_FOR_KID: 12,
+    MIN_AGE_FOR_SENIOR_CITIZEN: 60,
+};
+
+const PASSENGER_TYPE = {
+    ADULTS: 1,
+    KIDS: 2,
+    SENIOR_CITIZENS: 3,
+};
+
+module.exports = {
+    AGE_CONSTRAINTS,
+    PASSENGER_TYPE,
+};
