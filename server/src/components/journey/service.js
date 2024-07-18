@@ -42,6 +42,18 @@ let createJourney = async (data) => {
 let collectionSummary = async () => {
     let summary = await DAL.calculateCollectionSummary();
 
+    const stations = { ...constant.STATION }
+    for (let station in stations) {
+        let elem = summary.find(item => item.station === stations[station]);
+
+        if (!elem) {
+            summary.push({
+                station: stations[station],
+                totalCollection: 0,
+                totalDiscount: 0,
+            });
+        }
+    }
     return summary;
 };
 
