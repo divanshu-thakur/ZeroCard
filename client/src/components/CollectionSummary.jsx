@@ -14,7 +14,6 @@ const CollectionSummary = () => {
 
   const requestCollectionSummary = async () => {
     let response = await JourneyApi.requestCollectionSummary();
-    console.log("response: ", response);
     if (response.status == RESPONSE_STATUS.ERROR) {
       alert(response.message);
     } else if (response.status == RESPONSE_STATUS.SUCCESS) {

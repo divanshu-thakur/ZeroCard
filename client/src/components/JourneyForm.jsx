@@ -31,7 +31,6 @@ const JourneyForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let response = await JourneyApi.requestCreateJourney(form);
-    console.log("response: ", response);
     if (response.status == RESPONSE_STATUS.ERROR) {
       alert(response.message);
     } else if (response.status == RESPONSE_STATUS.SUCCESS) {

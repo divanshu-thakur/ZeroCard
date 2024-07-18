@@ -59,7 +59,6 @@ let passengerSummary = async () => {
             });
         }
     }
-    console.log(summary);
     return summary;
 };
 
