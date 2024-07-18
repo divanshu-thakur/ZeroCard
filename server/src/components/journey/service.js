@@ -7,7 +7,7 @@ const passengerDAL = require('../passenger/DAL');
 const passengerConstant = require('../passenger/constant');
 
 let createJourney = async (data) => {
-    let passenger = await passengerDAL.findByZeroCardId(data.zeroCardID);
+    let passenger = await passengerDAL.findByZeroCardId(data.zeroCardId);
     if (!passenger) throw new AppError(ERROR_CODES.INVALID_ZEROCARDID);
 
     let fare = 0, passengerType;
@@ -48,6 +48,18 @@ let collectionSummary = async () => {
 let passengerSummary = async () => {
     let summary = await DAL.calculatePassengerSummary();
 
+    const passengerTypes = { ...passengerConstant.PASSENGER_TYPE }
+    for (let passengerType in passengerTypes) {
+        let elem = summary.find(item => item.passengerType === passengerTypes[passengerType]);
+
+        if (!elem) {
+            summary.push({
+                count: 0,
+                passengerType: passengerTypes[passengerType],
+            });
+        }
+    }
+    console.log(summary);
     return summary;
 };
 

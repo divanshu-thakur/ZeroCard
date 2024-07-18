@@ -19,7 +19,7 @@ let collectionSummary = async (request, response) => {
 
     response.json({
         status: RESPONSE_STATUS.SUCCESS,
-        collectionSummary,
+        data: collectionSummary,
     });
 };
 
@@ -28,7 +28,7 @@ let passengerSummary = async (request, response) => {
 
     response.json({
         status: RESPONSE_STATUS.SUCCESS,
-        passengerSummary,
+        data: passengerSummary,
     });
 };
 

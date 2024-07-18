@@ -6,7 +6,7 @@ let createJourney = (data) => {
 };
 
 let findLastJourneyByPassengerId = (passengerId) => {
-    return model.findOne({ passengerId }).sort({ travelDate: -1 });
+    return model.findOne({ passengerId }).sort({ createdAt: -1 });
 };
 
 let calculateCollectionSummary = () => {
@@ -15,7 +15,7 @@ let calculateCollectionSummary = () => {
             $group: {
                 _id: '$startStation',
                 totalCollection: { $sum: '$fare' },
-                totalDiscount: { $sum: { $cond: [{ $nin: ['$fare', [20, 30, 100]] }, '$fare', 0] } }, // Adjusted the condition for discount
+                totalDiscount: { $sum: { $cond: [{ $not: { $in: ['$fare', [20, 30, 100]] } }, '$fare', 0] } },
             }
         },
         {
